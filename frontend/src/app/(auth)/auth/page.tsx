@@ -37,7 +37,7 @@ export default function page() {
           const res = await api.post("/api/users/refresh/", { refresh: refresh_token })
 
           if (res.status === 200) {
-            document.cookie = `${ACCESS_TOKEN}=${res.data.access}; path=/; Secure; SameSite=Strict`
+            document.cookie = `${ACCESS_TOKEN}=${res.data.access}; path=/; SameSite=Strict`
             router.push("/")
           }
         } catch (error) {
@@ -78,8 +78,8 @@ export default function page() {
       }
 
       if (res?.status === 200 || res?.status === 201) {
-        document.cookie = `${ACCESS_TOKEN}=${res.data.access}; path=/; Secure; SameSite=Strict`
-        document.cookie = `${REFRESH_TOKEN}=${res.data.refresh}; path=/; Secure; SameSite=Strict`;
+        document.cookie = `${ACCESS_TOKEN}=${res.data.access}; path=/; SameSite=Strict`
+        document.cookie = `${REFRESH_TOKEN}=${res.data.refresh}; path=/; SameSite=Strict`;
       
         router.push("/")
       }
