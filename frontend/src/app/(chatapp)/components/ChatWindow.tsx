@@ -73,7 +73,7 @@ export default function ChatWindow({ chatId, currentChatDetails }: { chatId: any
 
 
     return (
-        <div className='w-full min-w-[350px] sm:min-w-[400px] xl:min-w-[450px] h-full max-h-[350px] sm:max-h-[80%] sm:h-[80%] bg-[#1F1F1F] text-white border-4 border-[#D8BFD8] rounded-[23px] relative'>
+        <div className='w-full min-w-[350px] sm:min-w-[400px] xl:min-w-[450px] h-[90%] sm:max-h-[80%] sm:h-[80%] bg-[#1F1F1F] text-white border-4 border-[#D8BFD8] rounded-[23px] relative'>
             <div className='flex items-center gap-4 my-4 ml-8'>
                 <div className='relative w-[50px] sm:w-[80px] h-[50px] sm:h-[80px] rounded-full'>
                     {currentChatDetails && currentChatDetails.avatar ? (

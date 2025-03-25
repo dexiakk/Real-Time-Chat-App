@@ -20,7 +20,7 @@ export default function AvailableChatsArea({ setCurrentChat, setCurrentChatDetai
             </div>
 
             <div className='h-full min-h-[150px] overflow-y-auto disableScrollbar'>
-                <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-5'>
+                <div className='grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-4 gap-5'>
                     {user && user.friends.map((friend: Friend, index) => (
                         <div
                             key={index}
@@ -33,13 +33,13 @@ export default function AvailableChatsArea({ setCurrentChat, setCurrentChatDetai
                                 text={friend.username}
                                 type='user'
                             />
-                            <p>{friend.username}</p>
+                            <p className='text-[16px] text-[#9E689E] font-semibold mt-1'>{friend.username}</p>
                         </div>
                     ))}
 
                     <div className='flex flex-col items-center cursor-pointer'>
                         <RoundedIcon image={"/user/add.png"} text="Add" type='add' />
-                        <p>Add {type}</p>
+                        <p className='text-[16px] text-[#9E689E] font-semibold mt-1'>Add {type}</p>
                     </div>
                 </div>
             </div>
