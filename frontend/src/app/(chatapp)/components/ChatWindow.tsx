@@ -1,6 +1,7 @@
 "use client"
 import { useUser } from '@/app/context/UserContext';
 import api from '@/app/lib/api';
+import { API_URL } from '@/app/lib/utils';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react'
 
@@ -24,7 +25,7 @@ export default function ChatWindow({ chatId, currentChatDetails }: { chatId: any
 
         if (chatId.chat_id) {
 
-            const newSocket = new WebSocket(`ws://127.0.0.1:8000/ws/chat/${chatId.chat_id}/`);
+            const newSocket = new WebSocket(`ws://${API_URL}/ws/chat/${chatId.chat_id}/`);
 
             newSocket.onmessage = (event) => {
                 const data = JSON.parse(event.data);
@@ -72,9 +73,9 @@ export default function ChatWindow({ chatId, currentChatDetails }: { chatId: any
 
 
     return (
-        <div className='w-full min-w-[450px] h-[80%] bg-[#1F1F1F] text-white border-4 border-[#D8BFD8] rounded-[23px] relative'>
+        <div className='w-full min-w-[350px] sm:min-w-[400px] xl:min-w-[450px] h-full max-h-[350px] sm:max-h-[80%] sm:h-[80%] bg-[#1F1F1F] text-white border-4 border-[#D8BFD8] rounded-[23px] relative'>
             <div className='flex items-center gap-4 my-4 ml-8'>
-                <div className='relative w-[80px] h-[80px] rounded-full'>
+                <div className='relative w-[50px] sm:w-[80px] h-[50px] sm:h-[80px] rounded-full'>
                     {currentChatDetails && currentChatDetails.avatar ? (
                         <Image
                             src={`http://127.0.0.1:8000${currentChatDetails.avatar}`}
@@ -84,7 +85,7 @@ export default function ChatWindow({ chatId, currentChatDetails }: { chatId: any
                             className='rounded-full'
                         />
                     ) : (
-                        <div className="relative w-[80px] h-[80px] bg-gray-400 rounded-full overflow-hidden group">
+                        <div className="relative w-[50px] sm:w-[80px] h-[50px] sm:h-[80px] bg-gray-400 rounded-full overflow-hidden group">
                             <Image
                                 src={"/user/user-icon.png"}
                                 fill
@@ -106,11 +107,11 @@ export default function ChatWindow({ chatId, currentChatDetails }: { chatId: any
 
             <hr className='bg-[#D8BFD8] h-[3px] border-none mx-4 mb-2' />
 
-            <div ref={chatRef} className='h-[calc(100%-195px)] overflow-y-auto disableScrollbar'>
+            <div ref={chatRef} className='h-[calc(100%-165px)] sm:h-[calc(100%-195px)] overflow-y-auto disableScrollbar'>
                 <div className='w-full flex flex-col items-center gap-3 text-white'>
                     {messages.map((message: any, index) => (
                         <div key={index} className={`w-full flex ${message.username == username ? " justify-end text-end" : " justify-start"}`}>
-                            <div className={`px-4 py-3 rounded-[19px] ${message.username == username ? " mr-3 bg-[#9e689e]" : " ml-3 bg-[#402640]"}`}>
+                            <div className={`px-4 py-2 sm:py-3 text-[13px] sm:text-[16px] rounded-[19px] ${message.username == username ? " mr-3 bg-[#9e689e]" : " ml-3 bg-[#402640]"}`}>
                                 {message.message}
                             </div>
                         </div>

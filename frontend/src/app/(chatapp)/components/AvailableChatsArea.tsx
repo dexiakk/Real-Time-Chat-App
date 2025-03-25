@@ -14,13 +14,13 @@ export default function AvailableChatsArea({ setCurrentChat, setCurrentChatDetai
     const user = useUser().user
     return (
         <div>
-            <div className='mt-4 mb-4'>
-                <p className='font-bold text-[#D8BFD8] text-[20px]'>{type === "Friend" ? "Friends" : "Group Chats"}</p>
+            <div className='mt-0 sm:mt-4 mb-4'>
+                <p className='font-bold text-[#D8BFD8] text-[14px] sm:text-[20px]'>{type === "Friend" ? "Friends" : "Group Chats"}</p>
                 <hr className='bg-[#D8BFD8] h-[3px] border-none' />
             </div>
 
             <div className='h-full min-h-[150px] overflow-y-auto disableScrollbar'>
-                <div className='grid grid-cols-4 gap-5'>
+                <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-5'>
                     {user && user.friends.map((friend: Friend, index) => (
                         <div
                             key={index}
