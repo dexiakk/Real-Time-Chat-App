@@ -80,11 +80,11 @@ export default function page() {
       if (res?.status === 200 || res?.status === 201) {
         document.cookie = `${ACCESS_TOKEN}=${res.data.access}; path=/; SameSite=Strict; expires=${new Date(Date.now() + 30 * 60 * 1000).toUTCString()}`
         document.cookie = `${REFRESH_TOKEN}=${res.data.refresh}; path=/; SameSite=Strict expires=${new Date(Date.now() + 24 * 60 * 60 * 1000).toUTCString()}`;
-      
+
         router.push("/")
       }
 
-    } catch (error:any) {
+    } catch (error: any) {
       if (error?.status === 409) {
         setErrorMessage("Account already exist")
         return;
@@ -93,7 +93,7 @@ export default function page() {
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full h-screen bg-[#171717] flex items-center justify-center font-sans'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full h-screen bg-[#171717] flex flex-col items-center justify-center font-sans'>
         <div className='w-full max-w-[650px] bg-[#1F1F1F] flex flex-col px-10 py-12 mx-4 border-4 border-[#D8BFD8] rounded-[23px]'>
           <div className='text-center'>
             <p className='text-white font-semibold text-[28px]'>Welcome{formType === "login" ? " back" : ""}!</p>
@@ -167,7 +167,13 @@ export default function page() {
           </div>
         </div>
 
+        <div className='flex flex-col text-[19px] mt-3 font-bold text-white'>
+          <div className='flex gap-3'>Test user: <p className='text-[#9E689E]'>TestUser</p></div>
+          <div className='flex gap-3'>Test user password: <p className='text-[#9E689E]'>Testuser123@</p></div>
+        </div>
       </form>
+
+
     </Form>
   )
 }

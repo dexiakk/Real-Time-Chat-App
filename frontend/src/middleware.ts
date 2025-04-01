@@ -16,7 +16,6 @@ export function middleware(req: NextRequest) {
      if (!token && !req.url.includes('/auth')) {
         return NextResponse.redirect(new URL('/auth', req.url));
     }
-    
 
     return NextResponse.next();
 }
