@@ -1,6 +1,7 @@
 export const ACCESS_TOKEN = "access";
 export const REFRESH_TOKEN = "refresh";
-export const API_URL = "http://localhost:8000"
+export const API_URL = "https://chatapp.kacper-dutkiewicz-dev.pl"
+export const API_URL_WS = "chatapp.kacper-dutkiewicz-dev.pl"
 import { z } from "zod"
 
 export const authFormSchema = (formType: string) => z.object({

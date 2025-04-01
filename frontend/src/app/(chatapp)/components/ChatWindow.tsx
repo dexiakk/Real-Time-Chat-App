@@ -2,6 +2,7 @@
 import { useUser } from '@/app/context/UserContext';
 import api from '@/app/lib/api';
 import { API_URL } from '@/app/lib/utils';
+import { API_URL_WS } from '@/app/lib/utils';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react'
 
@@ -25,7 +26,7 @@ export default function ChatWindow({ chatId, currentChatDetails }: { chatId: any
 
         if (chatId.chat_id) {
 
-            const newSocket = new WebSocket(`ws://${API_URL}/ws/chat/${chatId.chat_id}/`);
+            const newSocket = new WebSocket(`wss://${API_URL_WS}/ws/chat/${chatId.chat_id}/`);
 
             newSocket.onmessage = (event) => {
                 const data = JSON.parse(event.data);
